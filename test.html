@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Title of the document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/log4.js"></script>
+</head>
+<style>
+    div#bar{
+        width : 300px;
+        background-color : bisque;
+        height : 20px;
+    }
+    div#gauge {
+        height : 100%;
+        width : 0%;
+        background-color : red;
+    }
+</style>
+<script src="js/default.js"></script>
+<script src="js/UI.js"></script>
+<script src="js/game.js"></script>
+    
+<body>
+    <div id="bar">
+        <div id="gauge"></div>
+    </div>
+    <button id="toggle" onclick="testToggle();">STOP</button>
+    <div id="tableWrapper">
+    
+    </div>
+    
+<script>
+    var isPause = false;
+    var position = 'foward';
+    
+    
+    var block1 = 
+        [
+            [0, 0, 0],
+            [0, 1, 1],
+            [0, 1, 1]
+        ];
+    
+    function createGameTable(wc,hc,target){
+        //wc : widthBlockCount , hc : heightBlockCount
+        var table = $('<div>').clone();
+        
+    }
+    
+    function gridBlock(array,target){
+        var block = $('<div>').attr('class','block').css({
+            width : '20px',
+            height : '20px',
+            backgroundColor : 'red',
+            border : '1px solid black',
+            display : 'inline-block',
+            verticalAlign : 'bottom'
+        })
+        var blank = $('<div>').attr('class','block').css({
+            width : '20px',
+            height : '20px',
+            border : '1px solid black',
+            display : 'inline-block',
+            verticalAlign : 'bottom'
+        })
+        var result = $('<div>').attr('class','block').css({
+            width : '66px',
+            height : '60px'
+        })
+    
+        for(i=0; i<=array.length-1; i++) {
+            for(j=0; j<=array[i].length-1 ;j++) {
+                if(array[i][j]==0) result.append(blank.clone()); else result.append(block.clone());
+                console.log(array[i][j])
+            }
+        }
+        
+        return result;
+    }
+    $('body').append(gridBlock(block1));
+    
+    function upperGauge(speed){
+        if(!isPause) {
+            
+            
+            var gauge = $('#gauge');
+            var current = gauge.width();
+            var fullSize = $('#bar').width();
+            
+            
+            var isCurrentFullSize = current == fullSize;
+            var isCurrentZero = current == 0;
+           
+            
+            
+            
+            if(position == 'foward') {
+                var width = current + speed
+                var isOver = width > fullSize;
+                if(isOver) {
+                    gauge.css('width','100%');
+                } else {
+                    gauge.css('width',width);
+                }
+            } else {
+                var width = current - speed
+                var isZero = width < 0; 
+                //back
+                if(isZero) {
+                    gauge.css('width','0%');
+                } else {
+                    gauge.css('width',width);
+                }
+            }
+            if(isCurrentFullSize) position = 'back';
+            if(isCurrentZero) position = 'foward';
+            
+        }
+        
+    }
+    var task1 = setInterval(function(){
+        upperGauge(10);
+    },10);
+    function testToggle(){
+        console.log('click');
+        if(isPause) {
+            isPause = false;
+            $('#toggle').html('STOP');
+        } else {
+            isPause = true;
+            $('#toggle').html('START');
+        }
+    }
+    
+    var t = new Emulator();
+    var UI2 = new EmulatorUI();
+    
+    clearInterval(task1);
+    t.initialize(new EmulatorUI());
+    t.gameLoad(new Game());
+    t.start();
+    
+    var log = new Log4();
+    
+    log.warn('test');
+    
+    log.setInfo = LOG4_INFO.warn;
+    
+    log.error('test');
+    
+</script>    
+
+</body>
+
+</html>
