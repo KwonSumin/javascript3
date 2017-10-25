@@ -4,16 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Title of the document</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./js/test.js"></script>
 </head>
 <style>
     
 </style>
-<script src="js/default.js"></script>
+<script src="js/test.js"></script>
 <body>
     
 <script>
- 
+var log = new Log4();
+    log.setInfo=LOG4_INFO.none;
+    log.info(123);
+    log.debug(123);
+    log.error('123');
+    log.warn('123');
+    
+    console.log(log);
 </script>    
 </body>
 
