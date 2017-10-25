@@ -7,6 +7,9 @@ var Emulator = function (){
     this.hasNeedDebug = false;
     this.debugPrint = function(str){
         if(this.hasNeedDebug) {
+            var stack = new Error().stack;
+            stack = stack.split('\n');
+            console.log(stack[2]);
             console.log(str);
         }
     }
