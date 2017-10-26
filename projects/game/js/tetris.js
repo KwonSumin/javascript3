@@ -1,6 +1,6 @@
 
 
-var Game = function(){
+var Tetris = function(){
     var hasNeedDebug = true;
     this.hasNeedDebug = false;
     this.debugPrint = function(str){
@@ -8,16 +8,13 @@ var Game = function(){
             console.log(str);
         }
     }
-    var buttonInfo = [
-        'NONE','UP','DOWN','LEFT','RIGHT','START',
-        'PAUSE','BUTTON_A','BUTTON_B','BUTTON_C','BUTTON_D'
-    ];
+    
     
     this.pressKey = function(key) {
         this.debugPrint('게임 인터페이스 : ' + buttonInfo[key]);
     }
     
-    var blocks = {
+    this.blocks = {
         block1 : 
         [
             [0, 0, 0],
@@ -31,6 +28,11 @@ var Game = function(){
             [0, 0, 1]
         ]
     }
+    
+    
+    
+    
+    
 }
 
 
