@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Title of the document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/test.js"></script>
+</head>
+<style>
+    .curPage {
+        background-color : red;
+    }
+</style>
+<body>
+    
+    <div id="paging"></div>
+    <div id="paging2"></div>
+<script>
+    $('#paging').paging({
+        total : 305,
+        curPage : 1,
+        pageCount : 10,
+        rowCount : 10
+    });
+    
+    var arr1 = [1,2,3];
+    var arr2 = [3,4,5];
+    var arr3 = [6,7,8];
+</script>
+</body>
+
+</html>
