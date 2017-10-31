@@ -21,15 +21,24 @@
 </style>
 <script src="js/emulator.js"></script>
 <script src="js/UI.js"></script>
-<script src="js/block.js"></script>
+<script src="js/block_backup.js"></script>
     
 <body>
     <div id="game"></div>
     
 <script>
     var block = new Tetris_Block();
-    var block1 = block.format[1];
-    var bl = block.gridBlock(1,$('#game'));
+    var target = $('#game');
+    block.convertArrayToBlock(block.format[1],target);
+    block.move(target,3);
+    
+    $(document).on('keydown',function(e){
+       
+        if(e.keyCode == 38) {
+            block.rotate(target);
+        }
+        
+    });
     
 </script>    
 
