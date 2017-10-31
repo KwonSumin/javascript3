@@ -19,7 +19,7 @@ var Emulator = function(){
         acceptAction.push(['pause','start']);
         var hadItem = acceptAction.indexOf(action) != -1;
         if( !hadItem ) throw new Error('키설정 오류');
-        this.keyboard.set(keyCode,action);
+        keyboard.set(keyCode,action);
         
     }
     
@@ -29,15 +29,15 @@ var Emulator = function(){
         var action = game.keyboard.get(key);
         game.controll(action);
     }
-    this.setKeyboard('up',38);
+    this.setKeyboard('up',38);        
     setKeyEvent();
     function setKeyEvent(){
         console.log(emul.keyboard);
-        if(emul.keyboard == null) throw new Error('키설정부터 진행 해주세요.');
+        if(keyboard == null) throw new Error('키설정부터 진행 해주세요.');
         $(document).on('keydown input',function(e){
             //TODO : setting keyEvent
                             //return : ex) up left buttonA ...
-            var action = emul.keyboard.get(e.keyCode);
+            var action = keyboard.get(e.keyCode);
             var hadAction = action != null;
             if( hadkeyCode ) {
                 emul.rom.controll(action);
