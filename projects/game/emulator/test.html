@@ -7,12 +7,23 @@
 <script src="./js/test.js"></script>
 </head>
 <style>
-    
+    div#emulator_container {border:1px black solid;width:500px;height:600px;}
+    div#screen {width: 90%;height : 45%; border:1px solid black;margin:0 auto;margin-top:5%;}
+    div#controller{width: 80%;height : 45%;margin:0 auto;margin-bottom:2.5%;margin-top:2.5%;border:1px solid black;}
 </style>
-<script src="js/default.js"></script>
 <body>
+    <div id="emulator_container">
+        <div id="screen">
+        
+        </div>
+        <div id="controller">
+            <div id="directCtrl"></div>
+            <div id="buttonCtrl"></div>
+        </div>
+    </div>
     
 <script>
+    var emul = new Emulator();
     
 </script>
 </body>
