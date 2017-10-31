@@ -29,6 +29,7 @@ var Emulator = function(){
         var action = game.keyboard.get(key);
         game.controll(action);
     }
+    this.setKeyboard('up',38);
     setKeyEvent();
     function setKeyEvent(){
         console.log(emul.keyboard);
