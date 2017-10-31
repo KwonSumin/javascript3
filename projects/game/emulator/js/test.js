@@ -32,14 +32,14 @@ var Emulator = function(){
     this.setKeyboard('up',38);        
     setKeyEvent();
     function setKeyEvent(){
-        console.log(emul.keyboard);
+        console.log(keyboard);
         if(keyboard == null) throw new Error('키설정부터 진행 해주세요.');
         $(document).on('keydown input',function(e){
             //TODO : setting keyEvent
                             //return : ex) up left buttonA ...
             var action = keyboard.get(e.keyCode);
             var hadAction = action != null;
-            if( hadkeyCode ) {
+            if( hadAction ) {
                 emul.rom.controll(action);
             }
             
