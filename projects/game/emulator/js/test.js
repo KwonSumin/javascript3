@@ -29,11 +29,11 @@ var Emulator = function(){
         var action = game.keyboard.get(key);
         game.controll(action);
     }
-    this.setKeyboard('up',38);        
+    //this.setKeyboard('up',38);        
     setKeyEvent();
     function setKeyEvent(){
         console.log(keyboard);
-        if(keyboard == null) throw new Error('키설정부터 진행 해주세요.');
+        if(keyboard.size <= 0) throw new Error('키설정부터 진행 해주세요.');
         $(document).on('keydown input',function(e){
             //TODO : setting keyEvent
                             //return : ex) up left buttonA ...
