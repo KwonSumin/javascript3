@@ -29,23 +29,28 @@ var Emulator = function(){
         var action = game.keyboard.get(key);
         game.controll(action);
     }
-    //this.setKeyboard('up',38);        
-    setKeyEvent();
+    this.setKeyboard('up',38);        
+    
     function setKeyEvent(){
-        console.log(keyboard);
         if(keyboard.size <= 0) throw new Error('키설정부터 진행 해주세요.');
+        if(emul.rom == null) throw new Error('게임 로드실패');
         $(document).on('keydown input',function(e){
             //TODO : setting keyEvent
                             //return : ex) up left buttonA ...
             var action = keyboard.get(e.keyCode);
             var hadAction = action != null;
             if( hadAction ) {
+                console.log(action);
                 emul.rom.controll(action);
-            }
+            } else {console.log(e.keyCode)}
             
         })
     }
-    
+    test();
+    function test(){
+        emul.setRom(new GameRom());
+        setKeyEvent();
+    }
 }
 
 var GameRom = function(){
@@ -69,4 +74,7 @@ var GameRom = function(){
     function action(key){
     
     }
+    
+    
+    
 }
