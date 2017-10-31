@@ -32,7 +32,7 @@ var Emulator = function(){
     setKeyEvent();
     function setKeyEvent(){
         console.log(emul.keyboard);
-        if(emul.keyboard.length <= 0) throw new Error('키설정부터 진행 해주세요.');
+        if(emul.keyboard == null) throw new Error('키설정부터 진행 해주세요.');
         $(document).on('keydown input',function(e){
             //TODO : setting keyEvent
                             //return : ex) up left buttonA ...
