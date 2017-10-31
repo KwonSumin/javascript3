@@ -29,7 +29,7 @@ var Emulator = function(){
         var action = game.keyboard.get(key);
         game.controll(action);
     }
-    this.setKeyboard('up',38);        
+            
     
     function setKeyEvent(){
         if(keyboard.size <= 0) throw new Error('키설정부터 진행 해주세요.');
@@ -48,6 +48,7 @@ var Emulator = function(){
     }
     test();
     function test(){
+        emul.setKeyboard('up',38);
         emul.setRom(new GameRom());
         setKeyEvent();
     }
