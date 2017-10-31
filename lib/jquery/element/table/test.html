@@ -9,10 +9,32 @@
 <style>
     
 </style>
-<script src="js/default.js"></script>
 <body>
-    
+    <table id="test">
+    </table>
 <script>
+    
+    var list = [];
+    
+    for(i=1; i<=10; i++)
+        list.push(table());
+    
+    function table(){
+        var obj = {
+            field1 : Math.random(),
+            field2 : Math.random()
+        }
+        return obj;
+    }
+    
+    $('#test').setTableField({
+        field : ['필드1','필드2'],
+        original : ['field1','field2'],
+        row : 10
+    });
+    
+    $('#test').setTableData(list);
+    
     
 </script>
 </body>

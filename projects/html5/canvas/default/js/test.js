@@ -12,4 +12,4 @@ var CanvasUtil = function(){
     this.simpleDraw = function(){
         
     }
-}
+}   
