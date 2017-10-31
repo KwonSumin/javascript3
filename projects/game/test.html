@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Title of the document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/log4.js"></script>
+</head>
+<style>
+    div#bar{
+        width : 300px;
+        background-color : bisque;
+        height : 20px;
+    }
+    div#gauge {
+        height : 100%;
+        width : 0%;
+        background-color : red;
+    }
+</style>
+<script src="js/emulator.js"></script>
+<script src="js/UI.js"></script>
+<script src="js/block_backup.js"></script>
+    
+<body>
+    <div id="game"></div>
+    
+<script>
+    var block = new Tetris_Block();
+    var target = $('#game');
+    block.convertArrayToBlock(block.format[1],target);
+    block.move(target,3);
+    
+    $(document).on('keydown',function(e){
+       
+        if(e.keyCode == 38) {
+            block.rotate(target);
+        }
+        
+    });
+    
+</script>    
+
+</body>
+
+</html>
