@@ -15,10 +15,10 @@ var Emulator = function(){
     }
     this.setKeyboard = function(action,keyCode){ //throws Exception
         var acceptAction = ['up','down','right','left'];
-        acceptAction.push(['buttonA','buttonB','buttonC','buttonD']);
-        acceptAction.push(['pause','start']);
+        acceptAction.push(...['buttonA','buttonB','buttonC','buttonD']);
+        acceptAction.push(...['pause','start']);
         var hadItem = acceptAction.indexOf(action) != -1;
-        if( !hadItem ) throw new Error('키설정 오류');
+        if( !hadItem ) {console.log(acceptAction);throw new Error('키설정 오류');}
         keyboard.set(keyCode,action);
         
     }
@@ -49,6 +49,16 @@ var Emulator = function(){
     test();
     function test(){
         emul.setKeyboard('up',38);
+        emul.setKeyboard('down',40);
+        emul.setKeyboard('left',37);
+        emul.setKeyboard('right',39);
+        emul.setKeyboard('buttonA',81);
+        emul.setKeyboard('buttonB',87);
+        emul.setKeyboard('buttonC',65);
+        emul.setKeyboard('buttonD',83);
+        emul.setKeyboard('pause',80);
+        emul.setKeyboard('start',49);
+        
         emul.setRom(new GameRom());
         setKeyEvent();
     }
