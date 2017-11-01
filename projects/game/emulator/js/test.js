@@ -24,6 +24,10 @@ var Emulator = function(){
     }
     
     
+    function changeScreen(){
+        
+    }
+    
     function actionCtrl(key){
         var game = emul.rom;
         var action = game.keyboard.get(key);
@@ -76,14 +80,78 @@ var GameRom = function(){
     keyboard.set('buttonD', 8);
     keyboard.set('pause',   9);
     keyboard.set('start',   0);
+    this.screen;
+    this.eventTargets = [];
+    var rom = this;
+    
+    
+    this.getScreen = {
+        main : function(){
+            var screen = $('<div>').css({
+                
+            });
+            rom.eventTargets = [];
+            var mainMenu = [
+            '1. 기본설정',
+            '2. 종료'
+            ];
+            var list = $('<ul>');
+            for(i=0;i<=mainMenu.length-1;i++) {
+                var menu = $('<li>').css({
+                    width : '100%',
+                    height : '25%',
+                    border : '1px solid black'
+                }).attr({
+                    
+                });
+                list.append(menu.html(mainMenu[i]));
+                rom.eventTargets.push(menu);
+                
+                
+                
+            }
+            screen.append(list);
+            this.screen = 'main';
+            return screen;
+        },
+        defaultSetting : function(){
+            
+        }
+    }
+    
+    
+    
     
     this.controll = function(action){
         
+        
+        function main(){
+            
+        }
     }
     
     
     function action(key){
-    
+        var screen = rom.screen;
+        
+        
+        function event(){
+            if(screen == 'main') {
+                var accept = ['up','down','buttonA'];
+                var action = [
+                    function(){//up
+                        
+                    },
+                    function(){//down
+                        
+                    },
+                    function(){//buttonA
+                        
+                    }
+                ]
+            }
+        }
+        
     }
     
 }
