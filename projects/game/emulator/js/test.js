@@ -76,6 +76,4 @@ var GameRom = function(){
     
     }
     
-    
-    
 }
