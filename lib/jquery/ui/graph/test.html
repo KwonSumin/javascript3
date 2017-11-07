@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Title of the document</title>
+<link rel="stylesheet" href="css/test.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/test.js"></script>
 </head>
@@ -11,12 +12,12 @@
 </style>
 <body>
     
+    <div class="graph">
+        <div class="gage3"></div>
+    </div>
 <script>
-    var paging = new Paging();
-    paging.setTarget($('body'));
-    paging.onAction = function(param){
-        console.log(param);
-    }
+    var setting = 'scrollbars=no,height=300,width=300';
+    window.open('','테스트',setting);
 </script>
 </body>
 

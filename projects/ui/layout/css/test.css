@@ -1,0 +1,53 @@
+body{
+    margin : 0;
+    padding : 0 10%;
+}
+header{
+    width : 100%;
+    height : 100px;
+    background-color : antiquewhite;
+}
+aside{
+    width : 250px;
+    height : 100vh;
+    background-color : azure;
+    margin : 0;
+    padding : 0;
+    position : absolute;
+    top : 100px;
+}
+article{
+    width : calc(100% - 250px);
+    margin : 0;
+    position : relative;
+    margin-left : 250px;
+    height : 100vh;
+    background-color:chartreuse;
+}
+footer{
+    width : 100%;
+    height : 200px;
+    background-color:  darkturquoise;
+    margin : 0;
+    padding : 0;
+}
+
+div.container{
+    margin : 0 auto ;
+}
+div.box{
+    width : 250px;
+    height : 200px;
+    border : 1px solid black;
+    display : inline-block;
+}
+
+div.line{
+    height : 102px;
+}
+
+@media screen and (max-width : 800px) {
+    aside{display : none;}
+    article{width : 100%;left:-250px;}
+    body{padding:0;}
+}

@@ -10,13 +10,15 @@
     
 </style>
 <body>
-    
+    <input id="file" type="file" multiple="true"/>
+    <div id="preview"></div>
 <script>
-    var paging = new Paging();
-    paging.setTarget($('body'));
-    paging.onAction = function(param){
-        console.log(param);
-    }
+    var util = new ImgUpload();
+    util.setTarget($('#file'));
+    util.setPreview($('#preview'));
+    util.start();
+    
+    
 </script>
 </body>
 
