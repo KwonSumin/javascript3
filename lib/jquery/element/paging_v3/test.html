@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Title of the document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/paging.js"></script>
+<script src="./js/ui.js"></script>
+<script src="./js/list.js"></script>
+</head>
+<style>
+    
+</style>
+<body>
+    
+<script>
+    
+    var testUi = new PagingUi();
+    testUi.setFirst('first modify');
+    
+    $('body').html(testUi.getPaging(1,10,move));
+    
+    function move(){
+        console.log($(this).html())
+    }
+    console.log(testUi.getObj());
+</script>
+</body>
+
+</html>
