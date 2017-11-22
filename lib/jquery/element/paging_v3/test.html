@@ -37,6 +37,12 @@
     paging.setList(new PagingList());
     paging.setTarget('paging',$('#paging'));
     paging.setTarget('table',$('table'));
+    paging.setAction('move',function(){
+        console.log($(this).data('move'))
+    })
+    paging.setAction('link',function(){
+        console.log($(this).html());
+    })
     paging.start();
     
 </script>
