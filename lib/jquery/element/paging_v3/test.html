@@ -12,18 +12,33 @@
     
 </style>
 <body>
+    <table>
     
+    </table>
+    <div id="paging"></div>
 <script>
-    
+    /*
     var testUi = new PagingUi();
+    
     testUi.setFirst('first modify');
     
-    $('body').html(testUi.getPaging(1,10,move));
+    $('#paging').html(testUi.getPaging(1,10,move));
     
     function move(){
         console.log($(this).html())
     }
     console.log(testUi.getObj());
+    
+    var list = new PagingList();
+    
+    $('table').html(list.getList());*/
+    var paging = new PagingUtil();
+    paging.setUi(new PagingUi());
+    paging.setList(new PagingList());
+    paging.setTarget('paging',$('#paging'));
+    paging.setTarget('table',$('table'));
+    paging.start();
+    
 </script>
 </body>
 
