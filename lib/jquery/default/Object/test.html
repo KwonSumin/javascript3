@@ -16,7 +16,8 @@
     
 <script>
     var aop = new Aspect();
-   logger = new Aspect_logger(); aop.before(print,function(method,...args){
+    logger = new Aspect_logger(); 
+    aop.before(print,function(method,...args){
        logger.defaultBefore(method,...args);
        
     });
@@ -29,13 +30,13 @@
         return str;
     }
     var obj = function() {
-        this.test1 = function test1(){
+        this.test1 = function(){
             console.log('test1');
         }
-        this.test2 = function test2(){
+        this.test2 = function(){
             console.log('test2')
         }
-    }
+    }&
     var test = new obj();
     aop.setTarget(test);
     aop.before(test.test1,function(){
