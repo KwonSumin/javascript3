@@ -16,25 +16,31 @@
     
 <script>
     var aop = new Aspect();
-    aop.before(print,function(){
-        var text = 'arguments : ';
-        var idx = 0;
-        for(var arg of arguments) {
-            if(idx++ > 0)text+=',';
-            text += arg;
-        }
-            
-        console.log(text);
-    })
+   logger = new Aspect_logger(); aop.before(print,function(method,...args){
+       logger.defaultBefore(method,...args);
+       
+    });
+    
     aop.afterReturn(print,function(ret){
         console.log('return : ' + ret);
     })
-    print('test','test2');
+    
     function print(str) {
-        console.log(str);
         return str;
     }
-    
+    var obj = function() {
+        this.test1 = function test1(){
+            console.log('test1');
+        }
+        this.test2 = function test2(){
+            console.log('test2')
+        }
+    }
+    var test = new obj();
+    aop.setTarget(test);
+    aop.before(test.test1,function(){
+        console.log('before')
+    })
 </script>
 </body>
 
