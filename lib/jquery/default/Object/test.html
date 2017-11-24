@@ -19,7 +19,7 @@
     logger = new Aspect_logger(); 
     aop.before(print,function(method,...args){
        logger.defaultBefore(method,...args);
-       
+    
     });
     
     aop.afterReturn(print,function(ret){
@@ -36,7 +36,7 @@
         this.test2 = function(){
             console.log('test2')
         }
-    }&
+    }
     var test = new obj();
     aop.setTarget(test);
     aop.before(test.test1,function(){
