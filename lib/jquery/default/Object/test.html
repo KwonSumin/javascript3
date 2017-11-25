@@ -22,7 +22,7 @@
     
     aop2.before(print,function(method,...args){
        logger.defaultBefore(method,...args);
-    
+        return method.method(...args);
     });
 
     aop2.afterReturn(print,function(ret){
@@ -30,6 +30,7 @@
     })
     
     function print(str) {
+        console.log('print : ',str)
         return str;
     }
     var obj = function() {
@@ -43,7 +44,7 @@
     var test = new obj();
     aop.setTarget(test);
     
-    aop.before(test.test1,function(){
+    aop.pointcut('.*','before',function(){
         console.log('before')
     })
 </script>
