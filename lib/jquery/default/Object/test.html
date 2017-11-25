@@ -16,13 +16,16 @@
     
 <script>
     var aop = new Aspect();
+    
+    var aop2 = new Aspect();
     logger = new Aspect_logger(); 
-    aop.before(print,function(method,...args){
+    
+    aop2.before(print,function(method,...args){
        logger.defaultBefore(method,...args);
     
     });
-    
-    aop.afterReturn(print,function(ret){
+
+    aop2.afterReturn(print,function(ret){
         console.log('return : ' + ret);
     })
     
@@ -39,6 +42,7 @@
     }
     var test = new obj();
     aop.setTarget(test);
+    
     aop.before(test.test1,function(){
         console.log('before')
     })
