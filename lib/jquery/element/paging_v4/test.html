@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Title of the document</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/logger.js"></script>
 <script src="js/ExceptionUtil.js"></script>
 <script src="./js/paging.js"></script>
 <script src="./js/ui.js"></script>
@@ -16,12 +15,70 @@
 </style>
 <body>
     <table>
-    
+        
     </table>
-    <div class="paging"></div>
+    <div class="first">&lt;&lt;</div><div class="back">&lt;</div><div class="paging"></div>
+    <div class="forward">&gt;</div>
+    <div class="last">&gt;&gt;</div>
 <script>
-    var obj = {name : 'sumin'};
+    var util = new RenderList({name : 'sumin'});
+    var list = [
+        {seq : 1,title:'제목1',reg_id:'ksm',reg_date:new Date()},
+        {seq : 2,title:'제목2',reg_id:'ksm',reg_date:new Date()},
+        {seq : 3,title:'제목3',reg_id:'ksm',reg_date:new Date()},
+        {seq : 4,title:'제목4',reg_id:'ksm',reg_date:new Date()}
+    ];
+    util.setList(list);
+    util.setTitles([
+        'No','제목','작성자','등록일'
+    ]);
+    util.setFields([
+        'seq','title','reg_id','reg_date'
+    ]);
+    util.setTarget($('table'));
+    util.changeList([
+        {seq : 5,title:'제목5',reg_id:'ksm',reg_date:new Date()},
+        {seq : 6,title:'제목6',reg_id:'ksm',reg_date:new Date()},
+        {seq : 7,title:'제목7',reg_id:'ksm',reg_date:new Date()},
+        {seq : 8,title:'제목8',reg_id:'ksm',reg_date:new Date()}
+    ]);
     
+    util.setOnWriteData(function(td,data,field){
+        if(field == 'title') {
+            var $a = $('<a href="#">').html(data);
+            td.html($a);
+            
+        } else {
+            td.html(data);
+        }
+        console.log(field);
+            
+    });
+    
+    util.renderList();
+    
+    var paging = {
+        currentPage : 1,
+        startPage : 1,
+        endPage : 10,
+        totalData : 152,
+        limitPage : 10,
+        limitData : 10,
+        limitRow : 10,
+        startRow : 0,
+        endRow : 9,
+        search : '',
+        searchTarget : ''
+    }
+    var link = new PagingLink(paging);
+    link.setTarget({
+        first : $('.first'),
+        back : $('.back'),
+        body : $('.paging'),
+        forward : $('.forward'),
+        last : $('.last')
+    });
+    link.renderBody();
 </script>
 </body>
 
