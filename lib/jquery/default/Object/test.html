@@ -46,6 +46,13 @@
     aop.pointcut('.*','before',function(){
         console.log('before')
     })
+    
+    function outMethod(){
+        console.log('out');
+        function inMethod(){
+            console.log('in');
+        }
+    }
 </script>
 </body>
 
