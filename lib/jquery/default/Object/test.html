@@ -22,7 +22,6 @@
     
     aop2.before(print,function(method,...args){
        logger.defaultBefore(method,...args);
-        return method.method(...args);
     });
 
     aop2.afterReturn(print,function(ret){
