@@ -8,6 +8,7 @@
 <script src="js/ExceptionUtil.js"></script>
 <script src="js/logger.js"></script>
 <script src="js/Aspect.js"></script>
+<script src="js/Annotation.js"></script>
 </head>
 <style>
     
@@ -21,6 +22,7 @@
     logger = new Aspect_logger(); 
     
     aop2.before(print,function(method,...args){
+        console.log(args)
        logger.defaultBefore(method,...args);
     });
 
@@ -45,13 +47,46 @@
     
     aop.pointcut('.*','before',function(){
         console.log('before')
-    })
+    });
     
     function outMethod(){
         console.log('out');
         function inMethod(){
             console.log('in');
         }
+    }
+    function valid(){
+        //@setter(parameterType="object",resultType="number")
+        //@test(value="test")
+    }
+    var anno = new Annotation();
+    
+    anno.setAnnotation('setter',function(param){
+      
+        console.log(param)
+        aop2.before(param.target,function(method,...args){
+            console.log('before');
+            console.log(param.option.parameterType)
+            if(typeof args[0] != param.option.parameterType) {
+                throw new Error('파라미터 에러');
+            }
+        });
+    });
+    anno.execute(valid);
+    var test = {name : 'sumin'};
+    changeVal('name','modify',test);
+    console.log(test);
+    
+    var obj = {
+        print : function(str){
+            console.log(str)
+        }
+    }
+    
+    function changeVal(key,value,ref){
+        var ref = ref || window;
+        ref[key] = value;
+        return value;
     }
 </script>
 </body>
