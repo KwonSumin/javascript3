@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Title of the document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/test.js"></script>
+</head>
+<style>
+    
+</style>
+<body>
+    <div data-attr="update" data-model="name"></div>
+    <div data-method="test2" class="mvc">클릭</div>
+    
+    <button data-method="addDiv" class="mvc">추가</button>
+    <div class="addDiv"></div>
+    <table data-attr="update" data-model="board">
+    
+    </table>
+<script>
+$(document).ready(function(){
+    var model = {
+        name : 'modify',
+        target : {
+            addDiv : $('.addDiv')
+        }  
+    };
+    var myApp = new app(model);
+    var service = function(){
+        this.test = function(model){
+            console.log(model.name);
+        }
+        this.addDiv = function(model,arg){
+            model.target
+                .addDiv
+                .append($('<div>').html('test'));
+        }
+    }
+    setController();
+    myApp.setService(new service());
+    myApp.controller.call('updateList');
+    
+    $('.mvc').click(function(){
+        myApp.controller.call($(this).attr('data-method'),'test');
+    });
+    
+    function setController(){
+        myApp.controller.add
+        ('updateList',function(model,service){
+            service.test(model);
+            this.update('name','수정함');
+            this.update('board',{
+                title : ['No','제목','작성자','등록일'],
+                field : ['seq','title','reg_id','reg_date'],
+                data : [
+                    {seq : 3,title : '제목',reg_id : 'ksm',reg_date : '1시간전'},
+                    {seq : 2,title : '제목',reg_id : 'ksm',reg_date : '2시간전'},
+                    {seq : 1,title : '제목',reg_id : 'ksm',reg_date : '3시간전'},
+                ]
+            })
+        });
+        myApp.controller.add
+        ('test2',function(model,service){
+            alert('test2');
+        });
+        myApp.controller.add
+        ('addDiv',function(model,service,...args){
+            service.addDiv(model,...args);
+        });
+    }
+    
+    
+})
+    
+</script>
+</body>
+
+</html>

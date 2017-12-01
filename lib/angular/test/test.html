@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Title of the document</title>
@@ -14,8 +14,8 @@
     
 </style>
 <body>
-<div ng-app="myApp" ng-controller="myCtrl">
-  sum : <a href="#" ng-repeat="x in page">{{x}}</a>
+<div ng-controller="myCtrl">
+  sum : <a href="#" ng-repeat="x in page" ng-click="link(x)">{{x}}</a>
   <button ng-click="next()">클릭</button>
 </div>
 <script>
