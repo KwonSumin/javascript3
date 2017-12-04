@@ -10,18 +10,22 @@
     
 </style>
 <body>
+    <div class="myApp">
     <div data-attr="update" data-model="name"></div>
     <div data-method="test2" class="mvc">클릭</div>
     
     <button data-method="addDiv" class="mvc">추가</button>
     <div class="addDiv"></div>
+    {{name2}}
     <table data-attr="update" data-model="board">
     
     </table>
+</div>  
 <script>
 $(document).ready(function(){
     var model = {
         name : 'modify',
+        name2 : 'test regex',
         target : {
             addDiv : $('.addDiv')
         }  
@@ -35,6 +39,8 @@ $(document).ready(function(){
             model.target
                 .addDiv
                 .append($('<div>').html('test'));
+            console.log(model.target.addDiv);
+            
         }
     }
     setController();
@@ -58,7 +64,7 @@ $(document).ready(function(){
                     {seq : 2,title : '제목',reg_id : 'ksm',reg_date : '2시간전'},
                     {seq : 1,title : '제목',reg_id : 'ksm',reg_date : '3시간전'},
                 ]
-            })
+            });
         });
         myApp.controller.add
         ('test2',function(model,service){
@@ -72,7 +78,7 @@ $(document).ready(function(){
     
     
 })
-    
+ 
 </script>
 </body>
 
