@@ -12,7 +12,136 @@
 <body>
     
 <script>
+    console.log(users);
+
+
+
+    function _map(list,mapper){
+        var result = [];
+        _each(list,function(val){
+            result.push(mapper(val));
+    });
+        return result;
+    }
+
+    function _keys(obj){
+        return obj == null ? undefined : Object.keys(obj);
+    }
+    function _each(list, iter) {
+        for(var i=0;i<_get(list,'length');i++)
+            iter(list[i],i);
+    }
+
+
+    function _filter(list,predi){
+        var result = [];
+            for(var i=0;i<_get(list,'length');i++){
+                if(predi(list[i]))
+                    result.push(list[i]);
+            }
+        return result;
+    }
+
+
+    function _get(obj,key){
+        return obj == null ? undefined : obj[key];
+    }
+    function _go(){
+        var fns = arguments;
+        _each(fns,function(){
+
+        })
+    }
+    function _curry(fn){
+        return function(a,b){
+            if(arguments.length ==2) return fn(a,b);
+            return function(b){
+                return fn(a,b);
+            }
+        }
+    }
+
+    function _curryr(fn){
+        return function(a) {
+            return arguments.length==2 ? fn(a,b) : (b) => fn(b,a);
+        }
+    }
+
+    var sub = _curryr(function(a,b){
+    return a-b;
+    });
+    var sub10 = sub(10);
+    console.log(
+    sub10(20)
+    );
+
+
+    var add = _curry(function(a,b){
+    return a+b;
+    })
+
+    console.log(
+    add(10,5)
+    );
+
+    function _rest(list,num){
+    return Array.prototype.slice.call(list,num || 1 );
+    }
+
+    function _reduce(list, iter, memo) {
+    if(arguments.length ==2) {
+        memo = list[0];
+        list = _rest(list,1);
+    }
+    _each(list,function(val){
+        memo = iter(memo,val);
+    });
+    return memo;        
+    }
+
+    function _pipe(){
+    var fns = arguments;
+    return function(arg){
+        return _reduce(fns, function(arg, fn) {
+            return fn(arg);
+        }, arg);
+    }
+    }
+    function _go(arg){
+    var fns = _rest(arguments);
+    return _pipe.apply(null,fns)(arg);
+    }
+    var f1 = _pipe(
+        (a) => a+1,
+        (a) => a*2,
+        (a) => a*a
+    );
+
+    console.log(
+        f1(3)
+    );
+
+    _go(null,
+        function(a){return a+1},
+        function(a){return a+2},
+        function(a){return a+3},
+        console.log
+    );
     
+    
+    var _mapR = _curryr(_map),
+        _filterR = _curryr(_filter);
+    
+    _go(
+        users,
+        _filterR(function(val){
+            return val.age >30;
+        }),
+        _mapR(function(val){
+            return val.name;
+        }),
+        console.log
+    )
 </script>
 </body>
 
